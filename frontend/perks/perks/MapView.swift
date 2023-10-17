@@ -7,40 +7,94 @@
 
 import SwiftUI
 import MapKit
+import CustomAuthSdk
+import web3
+import Push
+
+enum CheckInStatus {
+    case notCheckedIn
+    case memberOfRewardsClub
+    case notAMember
+}
 
 struct MapView: View {
     @StateObject private var viewModel = MapViewModel()
     @State private var showAlert: Bool = false
+    @Binding var smartAccount: SmartAccount?
+    @Binding var user: PushUser?
+    @State private var checkInStatus: CheckInStatus = .notCheckedIn
+    @State private var navigateToMarketplace: Bool = false
     
     var body: some View {
-        Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.annotations) { annotation in
-            MapAnnotation(coordinate: annotation.coordinate) {
-                VStack {
-                    Text(annotation.title ?? "")
-                        .font(.caption)
-                        .padding(4)
-                        .background(Color.white)
-                        .cornerRadius(4)
-                        .shadow(radius: 4)
-                    Button(action: {
-                        showAlert = true
-                    }) {
-                        Image("apecoin")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 40, height: 40)  // Adjust this size as needed
-                            .foregroundColor(.blue)
+        NavigationView {
+            Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: viewModel.annotations) { annotation in
+                MapAnnotation(coordinate: annotation.coordinate) {
+                    VStack {
+                        Text(annotation.title ?? "")
+                            .font(.caption)
+                            .padding(4)
+                            .background(Color.white)
+                            .cornerRadius(4)
                             .shadow(radius: 4)
-                    }
-                    .alert(isPresented: $showAlert) {
-                        Alert(title: Text("Checked In"),
-                              message: Text("You've checked into \(annotation.title ?? "the store")."),
-                              dismissButton: .default(Text("OK")))
+                        Button(action: {
+                            let hasRewardsCard = checkIfUserHasRewardsCard()
+                            
+                            checkInStatus = hasRewardsCard ? .memberOfRewardsClub : .notAMember
+                            showAlert = true
+                        }) {
+                            Image("apecoin")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 40, height: 40)  // Adjust this size as needed
+                                .foregroundColor(.blue)
+                                .shadow(radius: 4)
+                        }
+                        .alert(isPresented: $showAlert) {
+                            switch checkInStatus {
+                            case .memberOfRewardsClub:
+                                return Alert(title: Text("Welcome Back!"),
+                                             message: Text("You're a member of the rewards club."),
+                                             dismissButton: .default(Text("OK")) {
+                                                 navigateToMarketplace = true
+                                             })
+                            case .notAMember:
+                                return Alert(title: Text("Welcome!"),
+                                             message: Text("You're new here. Would you like to join our rewards club?"),
+                                             primaryButton: .default(Text("Yes"), action: {
+                                    Task {
+                                        do {
+                                            let userAddress = try await self.smartAccount!.address()
+                                            let txHash = try await mintRewardsCard(for: userAddress)
+                                            // Optionally, you can wait for the transaction to be confirmed here
+                                            print("Minting successful with tx hash: \(txHash)")
+                                            
+                                            navigateToMarketplace = true
+                                        } catch {
+                                            print("Error minting rewards card: \(error)")
+                                        }
+                                    }
+                                }),
+                                             secondaryButton: .cancel())
+                            default:
+                                return Alert(title: Text("Error"), dismissButton: .default(Text("OK")))
+                            }
+                        }
                     }
                 }
             }
         }
+        .background(NavigationLink("", destination: MarketplaceView(smartAccount: $smartAccount), isActive: $navigateToMarketplace))
     }
+    
+    func checkIfUserHasRewardsCard() -> Bool {
+        return Bool.random()
+    }
+    
+    func mintRewardsCard(for userAddress: String) async throws -> String {
+        return "minted"
+    }
+    
+    
 }
 
 class MapViewModel: NSObject, ObservableObject {
