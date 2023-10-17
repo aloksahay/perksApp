@@ -48,6 +48,20 @@ struct ContentView: View {
                                 print("created user")
                             }
                             
+                            let channelAddress = "0xCc985ba6934d134Feec4824ba40258608F3A4333"
+                            let res:PushChannel? = try await PushChannel.getChannel(
+                            options: PushChannel.GetChannelOption(
+                                channel: channelAddress, env: .STAGING
+                            ))
+                            
+                            let privateKey = ""
+                            
+//                            let signer = SignerPrivateKey.init("")
+                            
+//                            PushChannel.subscribe(option: PushChannel.SubscribeOption(signer: signer, channelAddress: channelAddress, env: .STAGING))
+                            
+                            print(res)
+                            
                             isLogged = true
                         }
                     }
