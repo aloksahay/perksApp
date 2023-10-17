@@ -36,11 +36,10 @@ struct ContentView: View {
                         try! await self.smartAccount!.initialize(options: initOptions)
                         self.tx = Shared.Transaction(to: "0x93f2e90Ab182E445E66a8523B57B3443cb0f1fC2", data: "0x", value: "0x1")
                     }}) {
-                        Text("Init Smart Account")
+                        Text("Get Started")
                             .foregroundColor(.white)
                             .padding()
-                            .background(Color.blue)
-                            .cornerRadius(10)
+                            .background(Color.black)
                     }
                 } else {
                     Button(action: {
