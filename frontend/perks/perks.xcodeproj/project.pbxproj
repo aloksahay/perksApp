@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E3C666F2ADEA6F6005D4DE1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C666E2ADEA6F6005D4DE1 /* MapView.swift */; };
 		3E95E4B52ADD6A6C00CEE333 /* perksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E95E4B42ADD6A6C00CEE333 /* perksApp.swift */; };
 		3E95E4B72ADD6A6C00CEE333 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E95E4B62ADD6A6C00CEE333 /* ContentView.swift */; };
 		3E95E4B92ADD6A6E00CEE333 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E95E4B82ADD6A6E00CEE333 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3E3C666E2ADEA6F6005D4DE1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3E95E4B12ADD6A6C00CEE333 /* perks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = perks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E95E4B42ADD6A6C00CEE333 /* perksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = perksApp.swift; sourceTree = "<group>"; };
 		3E95E4B62ADD6A6C00CEE333 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				3E95E4B42ADD6A6C00CEE333 /* perksApp.swift */,
 				3E95E4B62ADD6A6C00CEE333 /* ContentView.swift */,
+				3E3C666E2ADEA6F6005D4DE1 /* MapView.swift */,
 				3E95E4B82ADD6A6E00CEE333 /* Assets.xcassets */,
 				3E95E4BA2ADD6A6E00CEE333 /* Preview Content */,
 			);
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E95E4B72ADD6A6C00CEE333 /* ContentView.swift in Sources */,
+				3E3C666F2ADEA6F6005D4DE1 /* MapView.swift in Sources */,
 				3E95E4B52ADD6A6C00CEE333 /* perksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,6 +290,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"perks/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location for XYZ reasons";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location for XYZ reasons";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -314,6 +320,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"perks/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location for XYZ reasons";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location for XYZ reasons";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
