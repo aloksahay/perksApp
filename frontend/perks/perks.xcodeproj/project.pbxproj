@@ -15,8 +15,8 @@
 		3E95E4B72ADD6A6C00CEE333 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E95E4B62ADD6A6C00CEE333 /* ContentView.swift */; };
 		3E95E4B92ADD6A6E00CEE333 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E95E4B82ADD6A6E00CEE333 /* Assets.xcassets */; };
 		3E95E4BC2ADD6A6E00CEE333 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E95E4BB2ADD6A6E00CEE333 /* Preview Assets.xcassets */; };
-		3EFA808E2ADE98400099DC05 /* CustomAuthSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 3EFA808D2ADE98400099DC05 /* CustomAuthSdk */; };
-		3EFA80912ADE984C0099DC05 /* Push in Frameworks */ = {isa = PBXBuildFile; productRef = 3EFA80902ADE984C0099DC05 /* Push */; };
+		3EF770D12AE015C500D5AAC3 /* CustomAuthSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 3EF770D02AE015C500D5AAC3 /* CustomAuthSdk */; };
+		3EF770D42AE0196800D5AAC3 /* Push in Frameworks */ = {isa = PBXBuildFile; productRef = 3EF770D32AE0196800D5AAC3 /* Push */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,19 +36,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EFA80912ADE984C0099DC05 /* Push in Frameworks */,
-				3EFA808E2ADE98400099DC05 /* CustomAuthSdk in Frameworks */,
+				3EF770D42AE0196800D5AAC3 /* Push in Frameworks */,
+				3EF770D12AE015C500D5AAC3 /* CustomAuthSdk in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E3C66792ADFFB72005D4DE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3E95E4A82ADD6A6C00CEE333 = {
 			isa = PBXGroup;
 			children = (
 				3E95E4B32ADD6A6C00CEE333 /* perks */,
 				3E95E4B22ADD6A6C00CEE333 /* Products */,
+				3E3C66792ADFFB72005D4DE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -100,8 +108,8 @@
 			);
 			name = perks;
 			packageProductDependencies = (
-				3EFA808D2ADE98400099DC05 /* CustomAuthSdk */,
-				3EFA80902ADE984C0099DC05 /* Push */,
+				3EF770D02AE015C500D5AAC3 /* CustomAuthSdk */,
+				3EF770D32AE0196800D5AAC3 /* Push */,
 			);
 			productName = perks;
 			productReference = 3E95E4B12ADD6A6C00CEE333 /* perks.app */;
@@ -132,8 +140,8 @@
 			);
 			mainGroup = 3E95E4A82ADD6A6C00CEE333;
 			packageReferences = (
-				3EFA808C2ADE98400099DC05 /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */,
-				3EFA808F2ADE984C0099DC05 /* XCRemoteSwiftPackageReference "push-swift-sdk" */,
+				3EF770CF2AE015C500D5AAC3 /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */,
+				3EF770D22AE0196800D5AAC3 /* XCRemoteSwiftPackageReference "push-swift-sdk" */,
 			);
 			productRefGroup = 3E95E4B22ADD6A6C00CEE333 /* Products */;
 			projectDirPath = "";
@@ -376,7 +384,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3EFA808C2ADE98400099DC05 /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */ = {
+		3EF770CF2AE015C500D5AAC3 /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/UniPassID/Custom-Auth-iOS-SDK.git";
 			requirement = {
@@ -384,25 +392,25 @@
 				kind = branch;
 			};
 		};
-		3EFA808F2ADE984C0099DC05 /* XCRemoteSwiftPackageReference "push-swift-sdk" */ = {
+		3EF770D22AE0196800D5AAC3 /* XCRemoteSwiftPackageReference "push-swift-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ethereum-push-notification-service/push-swift-sdk";
+			repositoryURL = "https://github.com/stevysmith/push-swift-sdk";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.2;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3EFA808D2ADE98400099DC05 /* CustomAuthSdk */ = {
+		3EF770D02AE015C500D5AAC3 /* CustomAuthSdk */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3EFA808C2ADE98400099DC05 /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */;
+			package = 3EF770CF2AE015C500D5AAC3 /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */;
 			productName = CustomAuthSdk;
 		};
-		3EFA80902ADE984C0099DC05 /* Push */ = {
+		3EF770D32AE0196800D5AAC3 /* Push */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3EFA808F2ADE984C0099DC05 /* XCRemoteSwiftPackageReference "push-swift-sdk" */;
+			package = 3EF770D22AE0196800D5AAC3 /* XCRemoteSwiftPackageReference "push-swift-sdk" */;
 			productName = Push;
 		};
 /* End XCSwiftPackageProductDependency section */

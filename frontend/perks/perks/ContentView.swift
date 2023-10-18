@@ -54,13 +54,14 @@ struct ContentView: View {
                                 channel: channelAddress, env: .STAGING
                             ))
                             
-                            let privateKey = ""
+                            let signer = try TypedSignerPrivateKey(privateKey: "0xd5071223dcbf1cb824090bd98e0ddc807be00f1874fdd74bbd9225773a824397")
                             
-//                            let signer = SignerPrivateKey.init("")
+//                            let result:Bool = try await PushChannel.subscribe(
+//                                option: PushChannel.SubscribeOption(
+//                                    signer: signer,
+//                                    channelAddress: channelAddress,
+//                                    env: .STAGING))
                             
-//                            PushChannel.subscribe(option: PushChannel.SubscribeOption(signer: signer, channelAddress: channelAddress, env: .STAGING))
-                            
-                            print(res)
                             
                             isLogged = true
                         }
