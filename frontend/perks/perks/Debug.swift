@@ -28,7 +28,7 @@ struct DebugView: View {
                 HStack {
                     if smartAccount == nil {
                         Button(action: { Task {
-                            Shared.setupTracing(filter: "info")
+                            Shared.setupTracing("info")
                             let keyStorage = EthereumKeyLocalStorage()
                             let account = try! EthereumAccount.importAccount(replacing: keyStorage, privateKey: "0xd5071223dcbf1cb824090bd98e0ddc807be00f1874fdd74bbd9225773a824397", keystorePassword: "MY_PASSWORD")
                             let options = SmartAccountOptions(masterKeySigner: account, appId: "438d464001b8511abc304b109a640606",  chainOptions: [ChainOptions(chainId: ChainID.ETHEREUM_GOERLI, rpcUrl: "https://node.wallet.unipass.id/eth-goerli", relayerUrl: "https://testnet.wallet.unipass.id/relayer-v2-ethereum")])
