@@ -31,9 +31,9 @@ struct DebugView: View {
                             Shared.setupTracing(filter: "info")
                             let keyStorage = EthereumKeyLocalStorage()
                             let account = try! EthereumAccount.importAccount(replacing: keyStorage, privateKey: "0xd5071223dcbf1cb824090bd98e0ddc807be00f1874fdd74bbd9225773a824397", keystorePassword: "MY_PASSWORD")
-                            let options = SmartAccountOptions(masterKeySigner: account, appId: "438d464001b8511abc304b109a640606",  chainOptions: [ChainOptions(chainId: ChainID.ARBITRUM_GOERLI, rpcUrl: "https://node.wallet.unipass.id/arbitrum-goerli", relayerUrl: "https://testnet.wallet.unipass.id/relayer-v2-arbitrum")])
+                            let options = SmartAccountOptions(masterKeySigner: account, appId: "438d464001b8511abc304b109a640606",  chainOptions: [ChainOptions(chainId: ChainID.ETHEREUM_GOERLI, rpcUrl: "https://node.wallet.unipass.id/eth-goerli", relayerUrl: "https://testnet.wallet.unipass.id/relayer-v2-ethereum")])
                             self.smartAccount = CustomAuthSdk.SmartAccount(options: options)
-                            let initOptions = SmartAccountInitOptions(chainId: ChainID.ARBITRUM_GOERLI)
+                            let initOptions = SmartAccountInitOptions(chainId: ChainID.ETHEREUM_GOERLI)
                             try! await self.smartAccount!.initialize(options: initOptions)
                             self.tx = Shared.Transaction(to: "0x93f2e90Ab182E445E66a8523B57B3443cb0f1fC2", data: "0x", value: "0x1")
                         }}) {
