@@ -21,10 +21,10 @@
     {
       "identity" : "custom-auth-ios-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/UniPassID/Custom-Auth-iOS-SDK.git",
+      "location" : "https://github.com/stevysmith/Custom-Auth-iOS-SDK/",
       "state" : {
-        "revision" : "c0fecc3e502a04e6b271d7d7de1944782568fe78",
-        "version" : "0.0.1-alpha.16"
+        "branch" : "alpha-16-hotfix",
+        "revision" : "f787e7b4ac9fbcf5a3b57d82af9e3ec181db8695"
       }
     },
     {

@@ -9,6 +9,11 @@ import CustomAuthSdk
 import SwiftUI
 import web3
 import Push
+import CryptoSwift
+import Foundation
+import Web3Core
+import web3swift
+
 
 struct ContentView: View {
     @State private var text: String = "Initial Text"
@@ -103,8 +108,6 @@ struct ContentView: View {
                             print("CHAT")
                             print(response)
                             
-                            let typedSigner = TypedSmartAccountSigner(account: self.smartAccount!)
-                            
                             let subscribers:PushChannel.ChannelSubscribers = try await PushChannel.getSubscribers(
                                 option: PushChannel.GetChannelSubscribersOptions(
                                     channel: channelAddress,
@@ -129,18 +132,25 @@ struct ContentView: View {
                             print("Group chat")
                             print(group)
                             
-                            let testChannelAddress = "0x2AEcb6DeE3652dA1dD6b54D5fd4f7D8F43DaEb78"
+                            
+//                            let testChannelAddress = "0xCc985ba6934d134Feec4824ba40258608F3A4333"
+//                            let testChannelAddress = "0x2AEcb6DeE3652dA1dD6b54D5fd4f7D8F43DaEb78"
 //                            staging.push.org/channels?channel=0xCc985ba6934d134Feec4824ba40258608F3A4333
 
-                            let mockSigner = MockEIP712OptinSigner()
-                            let userAddress = try await mockSigner.getAddress()
+//                            let mockSigner = MockEIP712OptinSigner()
+//                            let userAddress = try await mockSigner.getAddress()
+                            
+//                            let userAddress = "0xD26A7BF7fa0f8F1f3f73B056c9A67565A6aFE63c"
 
+                            let typedSigner = TypedSmartAccountSigner(account: self.smartAccount!)
+                            let testChannelAddress = "0xCc985ba6934d134Feec4824ba40258608F3A4333"
+                            
                             let subscribe = try await PushChannel.subscribe(
                               option: PushChannel.SubscribeOption(
-                                signer: mockSigner, channelAddress: testChannelAddress, env: .STAGING))
+                                signer: typedSigner, channelAddress: testChannelAddress, env: .STAGING))
 
                             let isOptIn = try await PushChannel.getIsSubscribed(
-                              userAddress: userAddress, channelAddress: testChannelAddress, env: .STAGING)
+                              userAddress: address, channelAddress: testChannelAddress, env: .STAGING)
                             
                             print("Is subscribed?")
                             print(isOptIn)
@@ -148,7 +158,7 @@ struct ContentView: View {
                             let feeds = try await PushUser.getFeeds(
                               options:
                                 PushUser.FeedsOptionsType(
-                                  user: userAddress,
+                                  user: address,
                                   env: ENV.STAGING
                                 )
                             )
@@ -208,7 +218,29 @@ class TypedSmartAccountSigner: Push.TypedSigner {
     }
     
     func getEip712Signature(message: String) async throws -> String {
-        return try await account.signMessage(message: message)
+    
+        
+//        {"types":{"Subscribe":[{"name":"channel","type":"address"},{"name":"subscriber","type":"address"},{"name":"action","type":"string"}],"EIP712Domain":[{"name":"name","type":"string"},{"name":"chainId","type":"uint256"},{"name":"verifyingContract","type":"address"}]},"primaryType":"Subscribe","domain":{"name":"EPNS COMM V1","chainId":5,"verifyingContract":"0x"},"message":{"channel":"0xd26a7bf7fa0f8f1f3f73b056c9a67565a6afe63c","subscriber":"0x1b405a981be0f5aa5c2662c1b11a87d50c5c3eaa","action":"Subscribe"}}
+
+        
+        let address = try await account.address()
+        
+        let domain = Eip712Domain(name: "EPNS COMM V1", version: nil, chainId: 8001, verifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC", salt: nil)
+        
+        let types = ["EIP712Domain":[Eip712DomainType(name: "name", type: "string"),Eip712DomainType(name: "chainId", type:"uint256"),Eip712DomainType(name: "verifyingContract", type: "address")],"Subscribe":[Eip712DomainType(name: "channel", type:"address"),Eip712DomainType(name: "subscriber", type: "address"),Eip712DomainType(name: "action", type: "string")]]
+        
+        let typedData = Shared.TypedData(domain: domain, types:types, primaryType: "Subscribe", message: ["channel":Shared.Value.stringValue(inner: "0xCc985ba6934d134Feec4824ba40258608F3A4333"),"subscriber":Shared.Value.stringValue(inner: address),"action":Shared.Value.stringValue(inner: "Subscribe")])
+        
+        let sig = try! await account.signTypedData(typedData: typedData)
+        return sig
+        
+//        let domain = Eip712Domain(name: "uniPass", version: "0.1.2", chainId: 8001, verifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC", salt: nil)
+//        let types = ["EIP712Domain":[Eip712DomainType(name: "name", type: "string"),Eip712DomainType(name: "version", type:"string"),Eip712DomainType(name: "chainId", type: "uint256"),Eip712DomainType(name: "verifyingContract", type: "address")],"Mail":[Eip712DomainType(name: "from", type:"address"),Eip712DomainType(name: "to", type: "address"),Eip712DomainType(name: "contents", type: "string")]]
+//
+//        let typedData = Shared.TypedData(domain: domain, types:types, primaryType: "Mail", message: ["from":Shared.Value.stringValue(inner: "0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826"),"to":Shared.Value.stringValue(inner: "0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB"),"contents":Shared.Value.stringValue(inner: "Hello, Bob!")])
+//        let sig = try! await account.signTypedData(typedData: typedData)
+//
+//        return sig
     }
     
     func getAddress() async throws -> String {
