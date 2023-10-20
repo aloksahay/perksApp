@@ -129,7 +129,7 @@ struct ContentView: View {
                             print("Group chat")
                             print(group)
                             
-                            let testChannelAddress = "0xa2841271Fc88D8db0338BeF15eBeB1FE6c3E960F"
+                            let testChannelAddress = "0x2AEcb6DeE3652dA1dD6b54D5fd4f7D8F43DaEb78"
 //                            staging.push.org/channels?channel=0xCc985ba6934d134Feec4824ba40258608F3A4333
 
                             let mockSigner = MockEIP712OptinSigner()
@@ -144,6 +144,17 @@ struct ContentView: View {
                             
                             print("Is subscribed?")
                             print(isOptIn)
+                            
+                            let feeds = try await PushUser.getFeeds(
+                              options:
+                                PushUser.FeedsOptionsType(
+                                  user: userAddress,
+                                  env: ENV.STAGING
+                                )
+                            )
+                            
+                            print("FEED")
+                            print(feeds)
                             
                             let outMockSigner = MockEIP712OptoutSigner()
                             let outUserAddress = try await outMockSigner.getAddress()
