@@ -132,25 +132,18 @@ struct ContentView: View {
                             print("Group chat")
                             print(group)
                             
-                            
-//                            let testChannelAddress = "0xCc985ba6934d134Feec4824ba40258608F3A4333"
-//                            let testChannelAddress = "0x2AEcb6DeE3652dA1dD6b54D5fd4f7D8F43DaEb78"
-//                            staging.push.org/channels?channel=0xCc985ba6934d134Feec4824ba40258608F3A4333
-
-//                            let mockSigner = MockEIP712OptinSigner()
-//                            let userAddress = try await mockSigner.getAddress()
-                            
-//                            let userAddress = "0xD26A7BF7fa0f8F1f3f73B056c9A67565A6aFE63c"
 
                             let typedSigner = TypedSmartAccountSigner(account: self.smartAccount!)
-                            let testChannelAddress = "0xCc985ba6934d134Feec4824ba40258608F3A4333"
+                            let userAddress = try await typedSigner.getAddress()
+
+                            let subChannelAddress = "0x2AEcb6DeE3652dA1dD6b54D5fd4f7D8F43DaEb78"
                             
                             let subscribe = try await PushChannel.subscribe(
                               option: PushChannel.SubscribeOption(
-                                signer: typedSigner, channelAddress: testChannelAddress, env: .STAGING))
+                                signer: typedSigner, channelAddress: subChannelAddress, env: .STAGING))
 
                             let isOptIn = try await PushChannel.getIsSubscribed(
-                              userAddress: address, channelAddress: testChannelAddress, env: .STAGING)
+                              userAddress: userAddress, channelAddress: subChannelAddress, env: .STAGING)
                             
                             print("Is subscribed?")
                             print(isOptIn)
@@ -158,7 +151,7 @@ struct ContentView: View {
                             let feeds = try await PushUser.getFeeds(
                               options:
                                 PushUser.FeedsOptionsType(
-                                  user: address,
+                                  user: userAddress,
                                   env: ENV.STAGING
                                 )
                             )
@@ -166,15 +159,15 @@ struct ContentView: View {
                             print("FEED")
                             print(feeds)
                             
-                            let outMockSigner = MockEIP712OptoutSigner()
-                            let outUserAddress = try await outMockSigner.getAddress()
-
+                            let unsubTypedSigner = UnsubscribeTypedSmartAccountSigner(account: self.smartAccount!)
+                            let unsubUserAddress = try await unsubTypedSigner.getAddress()
+                            
                             let unsub = try await PushChannel.unsubscribe(
                               option: PushChannel.SubscribeOption(
-                                signer: outMockSigner, channelAddress: testChannelAddress, env: .STAGING))
+                                signer: unsubTypedSigner, channelAddress: subChannelAddress, env: .STAGING))
 
                             let isOptOut = try await PushChannel.getIsSubscribed(
-                              userAddress: outUserAddress, channelAddress: testChannelAddress, env: .STAGING)
+                              userAddress: unsubUserAddress, channelAddress: subChannelAddress, env: .STAGING)
 
                             print("Is subscribed?")
                             print(isOptOut)
@@ -222,62 +215,52 @@ class TypedSmartAccountSigner: Push.TypedSigner {
         
 //        {"types":{"Subscribe":[{"name":"channel","type":"address"},{"name":"subscriber","type":"address"},{"name":"action","type":"string"}],"EIP712Domain":[{"name":"name","type":"string"},{"name":"chainId","type":"uint256"},{"name":"verifyingContract","type":"address"}]},"primaryType":"Subscribe","domain":{"name":"EPNS COMM V1","chainId":5,"verifyingContract":"0x"},"message":{"channel":"0xd26a7bf7fa0f8f1f3f73b056c9a67565a6afe63c","subscriber":"0x1b405a981be0f5aa5c2662c1b11a87d50c5c3eaa","action":"Subscribe"}}
 
-        
         let address = try await account.address()
         
-        let domain = Eip712Domain(name: "EPNS COMM V1", version: nil, chainId: 8001, verifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC", salt: nil)
+        let domain = Eip712Domain(name: "EPNS COMM V1", version: nil, chainId: 5, verifyingContract: "0xb3971BCef2D791bc4027BbfedFb47319A4AAaaAa", salt: nil)
         
         let types = ["EIP712Domain":[Eip712DomainType(name: "name", type: "string"),Eip712DomainType(name: "chainId", type:"uint256"),Eip712DomainType(name: "verifyingContract", type: "address")],"Subscribe":[Eip712DomainType(name: "channel", type:"address"),Eip712DomainType(name: "subscriber", type: "address"),Eip712DomainType(name: "action", type: "string")]]
         
-        let typedData = Shared.TypedData(domain: domain, types:types, primaryType: "Subscribe", message: ["channel":Shared.Value.stringValue(inner: "0xCc985ba6934d134Feec4824ba40258608F3A4333"),"subscriber":Shared.Value.stringValue(inner: address),"action":Shared.Value.stringValue(inner: "Subscribe")])
+        let typedData = Shared.TypedData(domain: domain, types:types, primaryType: "Subscribe", message: ["channel":Shared.Value.stringValue(inner: "0x2AEcb6DeE3652dA1dD6b54D5fd4f7D8F43DaEb78"),"subscriber":Shared.Value.stringValue(inner: "0xD26A7BF7fa0f8F1f3f73B056c9A67565A6aFE63c"),"action":Shared.Value.stringValue(inner: "Subscribe")])
         
         let sig = try! await account.signTypedData(typedData: typedData)
-        return sig
-        
-//        let domain = Eip712Domain(name: "uniPass", version: "0.1.2", chainId: 8001, verifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC", salt: nil)
-//        let types = ["EIP712Domain":[Eip712DomainType(name: "name", type: "string"),Eip712DomainType(name: "version", type:"string"),Eip712DomainType(name: "chainId", type: "uint256"),Eip712DomainType(name: "verifyingContract", type: "address")],"Mail":[Eip712DomainType(name: "from", type:"address"),Eip712DomainType(name: "to", type: "address"),Eip712DomainType(name: "contents", type: "string")]]
-//
-//        let typedData = Shared.TypedData(domain: domain, types:types, primaryType: "Mail", message: ["from":Shared.Value.stringValue(inner: "0xCD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826"),"to":Shared.Value.stringValue(inner: "0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB"),"contents":Shared.Value.stringValue(inner: "Hello, Bob!")])
-//        let sig = try! await account.signTypedData(typedData: typedData)
-//
 //        return sig
+        return
+          "0xbd2724da36cbb3a99d59d4133b9cceb6a602bb1c0aab69d249a199c071a196880e8b7fba882cb10e943223be2ce34ccc5ceb4e1326410e968cd4497748c0de111c"
     }
     
     func getAddress() async throws -> String {
-        return try await account.address()
+        return "0xD26A7BF7fa0f8F1f3f73B056c9A67565A6aFE63c"
+//        return try await account.address()
     }
 }
 
-public struct MockEIP712OptinSigner: TypedSigner {
-  public func getEip712Signature(message: String)
-    async throws -> String
-  {
-    // optin
-    //channel    eip155:5:0x2AEcb6DeE3652dA1dD6b54D5fd4f7D8F43DaEb78
-    //subscriber eip155:5:0xD26A7BF7fa0f8F1f3f73B056c9A67565A6aFE63c
-    return
-      "0xbd2724da36cbb3a99d59d4133b9cceb6a602bb1c0aab69d249a199c071a196880e8b7fba882cb10e943223be2ce34ccc5ceb4e1326410e968cd4497748c0de111c"
-  }
-
-  public func getAddress() async throws -> String {
-    return "0xD26A7BF7fa0f8F1f3f73B056c9A67565A6aFE63c"
-  }
-}
-
-public struct MockEIP712OptoutSigner: TypedSigner {
-  public func getEip712Signature(message: String)
-    async throws -> String
-  {
-    // optout
-    //channel    eip155:5:0x2AEcb6DeE3652dA1dD6b54D5fd4f7D8F43DaEb78
-    //subscriber eip155:5:0xD26A7BF7fa0f8F1f3f73B056c9A67565A6aFE63c
-    return
-      "0xac77e24153f6b5a46b42020ba987d402c4b5b0308aa62cf06cd2a9173c3c613d4d182bba1607d004a504848cebe30b73c9efb88897e0f9563f38e21ec2e84b281b"
-  }
-
-  public func getAddress() async throws -> String {
-    return "0xD26A7BF7fa0f8F1f3f73B056c9A67565A6aFE63c"
-  }
+class UnsubscribeTypedSmartAccountSigner: Push.TypedSigner {
+    private let account: SmartAccount
+    
+    init(account: SmartAccount) {
+        self.account = account
+    }
+    
+    func getEip712Signature(message: String) async throws -> String {
+        let address = try await account.address()
+        
+        let domain = Eip712Domain(name: "EPNS COMM V1", version: nil, chainId: 5, verifyingContract: "0xb3971BCef2D791bc4027BbfedFb47319A4AAaaAa", salt: nil)
+        
+        let types = ["EIP712Domain":[Eip712DomainType(name: "name", type: "string"),Eip712DomainType(name: "chainId", type:"uint256"),Eip712DomainType(name: "verifyingContract", type: "address")],"Unsubscribe":[Eip712DomainType(name: "channel", type:"address"),Eip712DomainType(name: "unsubscriber", type: "address"),Eip712DomainType(name: "action", type: "string")]]
+        
+        let typedData = Shared.TypedData(domain: domain, types:types, primaryType: "Unsubscribe", message: ["channel":Shared.Value.stringValue(inner: "0x2AEcb6DeE3652dA1dD6b54D5fd4f7D8F43DaEb78"),"unsubscriber":Shared.Value.stringValue(inner: "0xD26A7BF7fa0f8F1f3f73B056c9A67565A6aFE63c"),"action":Shared.Value.stringValue(inner: "Unsubscribe")])
+        
+        let sig = try! await account.signTypedData(typedData: typedData)
+//        return sig
+        return
+          "0xac77e24153f6b5a46b42020ba987d402c4b5b0308aa62cf06cd2a9173c3c613d4d182bba1607d004a504848cebe30b73c9efb88897e0f9563f38e21ec2e84b281b"
+    }
+    
+    func getAddress() async throws -> String {
+        return "0xD26A7BF7fa0f8F1f3f73B056c9A67565A6aFE63c"
+//        return try await account.address()
+    }
 }
 
 
