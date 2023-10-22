@@ -143,7 +143,7 @@ struct MapView: View {
                             .padding(.leading, -5)
                             .padding(.trailing, 5)
                         
-                        Text("Downtown, Prague 1⌝")
+                        Text("Downtown⌝")
                             .fontWeight(.semibold)
                             .font(.subheadline)
                             .foregroundColor(.accentColor)
@@ -240,8 +240,6 @@ struct MapView: View {
         print("Is subscribed?")
         print(isOptOut)
         
-        
-        
         let chatId = "064ae7a086bc1d25cf45231a9725fec6789e1013b99bb482f41136268ffa73c6"
         let group:PushChat.PushGroup? = try await PushChat.getGroup(chatId: chatId, env: .STAGING)
         
@@ -298,7 +296,7 @@ extension MapViewModel: CLLocationManagerDelegate {
         
         // Create a pin 100 meters away from the user's location
         let destination = location.coordinate.locationWithBearing(bearing: 0, distanceMeters: 100)
-        let pin = CustomAnnotation(coordinate: destination, title: "MFA store")
+        let pin = CustomAnnotation(coordinate: destination, title: "ApeVine")
         annotations.append(pin)
     }
 }

@@ -89,7 +89,7 @@ struct HomeView: View {
                         .padding(.leading, -5)
                         .padding(.trailing, 5)
                     
-                    Text("Downtown, Prague 1⌝")
+                    Text("Downtown⌝")
                         .fontWeight(.semibold)
                         .font(.subheadline)
                         .foregroundColor(.accentColor)
@@ -170,7 +170,7 @@ extension StoreMapViewModel: CLLocationManagerDelegate {
         region.center = location.coordinate
         
         let destination = location.coordinate.locationWithBearing(bearing: 0, distanceMeters: 100)
-        let pin = CustomAnnotation(coordinate: destination, title: "MFA store")
+        let pin = CustomAnnotation(coordinate: destination, title: "ApeVine")
         annotations.append(pin)
     }
 }

@@ -68,7 +68,7 @@ struct ContentView: View {
                                    try! await self.smartAccount!.initialize(options: initOptions)
                                     
                                     let address = try await self.smartAccount!.address()
-                                    print("Current address")
+                                    print("✅ Current address")
                                     print(address)
                                     
                                     
@@ -174,7 +174,6 @@ struct ContentView: View {
                     NavigationLink(destination: MapView(smartAccount: $smartAccount, user: $user), isActive: $isMapViewActive) {
                         Button(action: {
                             //  check/mint perk card logic here
-                            // For demonstration, we'll assume it's minted successfully
                             hasPerkCard = true
                             isMapViewActive = true
                             

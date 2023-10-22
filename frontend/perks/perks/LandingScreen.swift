@@ -72,31 +72,20 @@ struct LandingScreen_Previews: PreviewProvider {
     }
 }
 
-//struct ActivityIndicator: UIViewRepresentable {
-//    @Binding var isAnimating: Bool
-//    
-//    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
-//        return UIActivityIndicatorView()
-//    }
-//    
-//    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
-//        isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
-//    }
-//}
-//
 ////move this somewhere later
 ////Light #FCD73E
 ////Dark #D7BD52
 //
-//extension Color {
-//    
+
+// extension Color {
+//
 //    init(hex: UInt) {
 //        let red = Double((hex & 0xFF0000) >> 16) / 255.0
 //        let green = Double((hex & 0x00FF00) >> 8) / 255.0
 //        let blue = Double((hex & 0x0000FF) >> 0) / 255.0
 //        self.init(red: red, green: green, blue: blue)
 //    }
-//    
+//
 //    static let lightThemeColor = Color.init(hex: 0xFCD73E)
 //    static let darkThemeColor = Color.init(hex: 0xD7BD52)
 //}
