@@ -11,8 +11,8 @@ import SwiftUI
 struct perksApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            LandingScreen()
+            ContentView()
+//            LandingScreen()
         }
     }
 }

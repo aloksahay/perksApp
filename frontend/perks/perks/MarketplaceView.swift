@@ -50,6 +50,48 @@ struct MarketplaceView: View {
                 }
             }
             
+            Button("Contact Support") {
+                
+                    Task {
+                        let user: PushUser?
+                        let address = try await self.smartAccount!.address()
+                        let signer = SmartAccountSigner(account: self.smartAccount!)
+                        if let _user: PushUser = try await PushUser.get(account: address, env: ENV.STAGING) {
+                            user = _user
+                        } else {
+                            let _user:PushUser = try await PushUser.create(
+                                options: PushUser.CreateUserOptions(
+                                    env: ENV.STAGING,
+                                    signer: signer,
+                                    progressHook: nil
+                                ))
+                            user = _user
+                        }
+                        
+                        let pgpPrivateKey = try await PushUser.DecryptPGPKey(
+                          encryptedPrivateKey: user!.encryptedPrivateKey,
+                          signer: signer
+                        )
+                        
+                        let response:Message = try await PushChat.send(PushChat.SendOptions(
+                          messageContent: "Gm gm! It's me... Mario, I need help!",
+                          messageType: "Text",
+                          receiverAddress: "0xCc985ba6934d134Feec4824ba40258608F3A4333",
+                          account: address,
+                          pgpPrivateKey: pgpPrivateKey,
+                          env: ENV.STAGING
+                        ))
+                        
+                        print(response)
+                    }
+                
+               
+              }
+              .padding()
+              .background(Color.blue)
+              .foregroundColor(.white)
+              .cornerRadius(5)
+            
             if let product = selectedProduct {
                 VStack(spacing: 20) {
                     Text("Buy \(product.name) for $\(product.price, specifier: "%.2f")?")
