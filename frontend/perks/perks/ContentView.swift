@@ -61,7 +61,7 @@ struct ContentView: View {
                                 Task {
                                     Shared.setupTracing("info")
                                    let keyStorage = EthereumKeyLocalStorage()
-                                   let account = try! EthereumAccount.importAccount(replacing: keyStorage, privateKey: "0xd5071223dcbf1cb824090bd98e0ddc807be00f1874fdd74bbd9225773a824397", keystorePassword: "MY_PASSWORD")
+                                   let account = try! EthereumAccount.importAccount(replacing: keyStorage, privateKey: "0xd5071223dcbf1cb824090bd98e0ddc807be00f1874fdd74bbd9225773a824397", keystorePassword: "MY_PASSWORD") //We are aware the pvt is visible, it's all according to bad but intentional design choices.
                                    let options = SmartAccountOptions(masterKeySigner: account, appId: "9e145ea3e5525ee793f39027646c4511",  chainOptions: [ChainOptions(chainId: ChainID.POLYGON_MUMBAI, rpcUrl: "https://node.wallet.unipass.id/polygon-mumbai", relayerUrl: nil), ChainOptions(chainId: ChainID.ETHEREUM_GOERLI, rpcUrl: "https://node.wallet.unipass.id/eth-goerli", relayerUrl: "https://testnet.wallet.unipass.id/relayer-v2-eth")])
                                    self.smartAccount = CustomAuthSdk.SmartAccount(options: options)
                                    let initOptions = SmartAccountInitOptions(chainId: ChainID.POLYGON_MUMBAI)
