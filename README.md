@@ -40,6 +40,8 @@ Tacobell NFT: 0x4520FC2D273c149DAD9307650e1d95DeEB26e907
 
 ## Mantle testnet
 
+Tweet link: https://x.com/sahay_alok/status/1716230030362132906
+
 ```
 usdcToken: 0xD46A99587C3Aa2A4e2fe1F0EE75495Dd38Caa2bA
 perksToken: 0x8078cB27dD51266950FE0317CB314F16f11Fac8b
@@ -53,8 +55,6 @@ StoreNFTFactory: 0xC27Ca4fCAe6B0D3dE120f0C577d7724f992a6E81
 Apecoin NFT: 0x339bAD52BB7874489567ae1208537FaeA8892993
 Tacobell NFT: 0x82cCE60CC416e4d3C8f3A9868512fdeB706A597B
 ```
-
-Tweet link: https://x.com/sahay_alok/status/1716230030362132906
 
 ## Ethereum Sepolia
 
