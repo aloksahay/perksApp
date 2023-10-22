@@ -25,8 +25,8 @@ struct MapView: View {
     @Binding var user: PushUser?
     @State private var checkInStatus: CheckInStatus = .notCheckedIn
     @State private var navigateToMarketplace: Bool = false
-    @State private var vaultBalance: Double = 0.0
-    @State private var userXP: Int = 0
+    @State private var balance: Float = 0
+    @State private var xp: Int = 0
     
     var body: some View {
         NavigationView {
@@ -38,19 +38,22 @@ struct MapView: View {
                         navigateToMarketplace = true
                         
                     }) {
-                        Text("Top Up")
+                        Text("Top up ++")
                             .padding()
                             .font(.subheadline)
-                            .background(Color.black)
+                            .fontWeight(.semibold)
+                            .background(Color.accentColor)
                             .foregroundColor(.white)
                     }
                     .padding(.leading, 10)
                     Spacer()
                     VStack(alignment: .trailing) {
-                        Text("Wallet Balance: \(vaultBalance) USD")
-                            .foregroundColor(.accentColor)
-                        Text("Perks: \(userXP) XP")
-                            .foregroundColor(.accentColor)
+                        Text("Wallet Balance: $\(String(format: "%.1f", balance))")
+                            .fontWeight(.semibold)
+                            .foregroundColor(.black)
+                        Text("Perks: \(xp)")
+                            .fontWeight(.semibold)
+                            .foregroundColor(.black)
                     }
                     .padding()
                 }
@@ -115,13 +118,29 @@ struct MapView: View {
                 
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("1421 Valencia St, San Francisco")
+                        
+                        Text("My Perks")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.accentColor)
+                            .padding(.top,5)
+                        
+                        Rectangle()
+                            .fill(Color(UIColor.lightGray))
+                            .frame(height: 1)
+                            .padding(.bottom, 10)
+                            .padding(.leading, -5)
+                            .padding(.trailing, 5)
+                        
+                        Text("Downtown, Prague 1⌝")
+                            .fontWeight(.semibold)
                             .font(.subheadline)
                             .foregroundColor(.accentColor)
-                            .padding(.top, 10)
+                            .padding(.top, -5)
                         
-                        Text("Made By Apes Store #2")
+                        Text("ApeVine #MadeByApes")
                             .font(.title3)
+                            .fontWeight(.semibold)
                             .foregroundColor(.black)
                     }
                     Spacer()
@@ -137,7 +156,7 @@ struct MapView: View {
                     }
                     .frame(maxWidth: .infinity, maxHeight: 200)
                     .background(
-                        Image("MBA_card")
+                        Image("ApeVine")
                             .resizable()
                             .aspectRatio(contentMode: .fill)
                     )
