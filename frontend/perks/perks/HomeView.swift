@@ -10,8 +10,9 @@ import MapKit
 
 struct HomeView: View {
     
-    @State private var balance: Int = 0
+    @State private var balance: Float = 0
     @State private var xp: Int = 0
+    @State private var navigateToDetail = false
     
     @StateObject private var viewModel = StoreMapViewModel()
     
@@ -23,36 +24,80 @@ struct HomeView: View {
                     
                     
                 }) {
-                    Text("Top Up")
+                    Text("Top up ++")
                         .padding()
                         .font(.subheadline)
-                        .background(Color.black)
+                        .fontWeight(.semibold)
+                        .background(Color.accentColor)
                         .foregroundColor(.white)
                 }
                 .padding(.leading, 10)
                 Spacer()
                 VStack(alignment: .trailing) {
-                    Text("Wallet Balance: \(balance) USD")
-                        .foregroundColor(.accentColor)
-                    Text("Perks: \(xp) XP")
-                        .foregroundColor(.accentColor)
+                    Text("Wallet Balance: $\(String(format: "%.1f", balance))")
+                        .fontWeight(.semibold)
+                        .foregroundColor(.black)
+                    Text("Perks: \(xp)")
+                        .fontWeight(.semibold)
+                        .foregroundColor(.black)
                 }
                 .padding()
             }
             
-            Map(coordinateRegion: $viewModel.region)
-                .frame(height: 250)
-                .edgesIgnoringSafeArea(.horizontal)
+            Map(coordinateRegion: $viewModel.region, annotationItems: viewModel.annotations) { annotation in
+                
+                MapAnnotation(coordinate: annotation.coordinate) {
+                    
+                    VStack {
+                        Text("ApeVine")
+                            .font(.caption)
+                            .padding(4)
+                            .fontWeight(.semibold)
+                            .background(Color.accentColor)
+                            .foregroundColor(.white)
+                            .cornerRadius(4)
+                        Button(action: {
+                            // Open navigation to store
+                            
+                        }) {
+                            Image("apecoin")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 30, height: 30)
+                                .foregroundColor(.blue)
+                        }
+                        
+                    }
+                }
+            }
+            .frame(height: 250)
+            .edgesIgnoringSafeArea(.horizontal)
             
             HStack {
                 VStack(alignment: .leading) {
-                    Text("1421 Valencia St, San Francisco")
+                    
+                    Text("My Perks")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .foregroundColor(.accentColor)
+                        .padding(.top,5)
+                    
+                    Rectangle()
+                        .fill(Color(UIColor.lightGray))
+                        .frame(height: 1)
+                        .padding(.bottom, 10)
+                        .padding(.leading, -5)
+                        .padding(.trailing, 5)
+                    
+                    Text("Downtown, Prague 1⌝")
+                        .fontWeight(.semibold)
                         .font(.subheadline)
                         .foregroundColor(.accentColor)
-                        .padding(.top, 10)
+                        .padding(.top, -5)
                     
-                    Text("Made By Apes Store #2")
+                    Text("ApeVine #MadeByApes")
                         .font(.title3)
+                        .fontWeight(.semibold)
                         .foregroundColor(.black)
                 }
                 Spacer()
@@ -60,30 +105,33 @@ struct HomeView: View {
             .padding(.leading)
             
             Button(action: {
-                            // Define the action to be performed when the button is tapped
-                        }) {
-                            VStack {
-                                Text("")
-                                    .foregroundColor(.white)
-                            }
-                            .frame(maxWidth: .infinity, maxHeight: 200)
-                            .background(
-                                Image("MBA_card")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                            )
-                        }
-                        .cornerRadius(7)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.accentColor, lineWidth: 5)
-                        )
-                        .clipped()
-                        .padding(10)
+                //Go to store detail
+                self.navigateToDetail = true
+            }) {
+                VStack {
+                    Text("")
+                        .foregroundColor(.white)
+                }
+                .frame(maxWidth: .infinity, maxHeight: 200)
+                .background(
+                    Image("ApeVine")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                )
+            }
+            .background(
+                NavigationLink("", destination: StoreView(), isActive: $navigateToDetail)
+                    .hidden()
+            )
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 15)
+                    .stroke(Color.accentColor, lineWidth: 5)
+            )
+            .padding(.horizontal, 10)
             Spacer()
         }
         .background(Color.white)
-//        .edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -96,7 +144,7 @@ struct HomeView_Previews: PreviewProvider {
 
 class StoreMapViewModel: NSObject, ObservableObject {
     @Published var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194),
+        center: CLLocationCoordinate2D(latitude: 50.0443, longitude: 14.2550),
         span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
     )
     @Published var annotations: [CustomAnnotation] = []
