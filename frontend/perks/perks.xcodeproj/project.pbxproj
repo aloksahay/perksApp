@@ -10,29 +10,25 @@
 		3E3C666F2ADEA6F6005D4DE1 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C666E2ADEA6F6005D4DE1 /* MapView.swift */; };
 		3E3C66712ADEB568005D4DE1 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C66702ADEB568005D4DE1 /* Debug.swift */; };
 		3E3C66732ADEBDB9005D4DE1 /* MarketplaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C66722ADEBDB9005D4DE1 /* MarketplaceView.swift */; };
-		3E3C66752ADECE4A005D4DE1 /* SECP256K1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3C66742ADECE4A005D4DE1 /* SECP256K1.swift */; };
 		3E95E4B52ADD6A6C00CEE333 /* perksApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E95E4B42ADD6A6C00CEE333 /* perksApp.swift */; };
 		3E95E4B72ADD6A6C00CEE333 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E95E4B62ADD6A6C00CEE333 /* ContentView.swift */; };
 		3E95E4B92ADD6A6E00CEE333 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E95E4B82ADD6A6E00CEE333 /* Assets.xcassets */; };
 		3E95E4BC2ADD6A6E00CEE333 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E95E4BB2ADD6A6E00CEE333 /* Preview Assets.xcassets */; };
-		3EFA808E2ADE98400099DC05 /* CustomAuthSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 3EFA808D2ADE98400099DC05 /* CustomAuthSdk */; };
-		3EFA80912ADE984C0099DC05 /* Push in Frameworks */ = {isa = PBXBuildFile; productRef = 3EFA80902ADE984C0099DC05 /* Push */; };
-		5C4FDA4B2ADED1FE00D65D18 /* LandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FDA4A2ADED1FE00D65D18 /* LandingScreen.swift */; };
-		5C4FDA4D2ADED22D00D65D18 /* backgroundVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5C4FDA4C2ADED22D00D65D18 /* backgroundVid.mp4 */; };
+		3EEBCDD12AE2E7CC00C462FD /* CustomAuthSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 3EEBCDD02AE2E7CC00C462FD /* CustomAuthSdk */; };
+		3EF770D42AE0196800D5AAC3 /* Push in Frameworks */ = {isa = PBXBuildFile; productRef = 3EF770D32AE0196800D5AAC3 /* Push */; };
+		5CEFF4322AE5063400F0FCE7 /* LandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CEFF4312AE5063400F0FCE7 /* LandingScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3E3C666E2ADEA6F6005D4DE1 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3E3C66702ADEB568005D4DE1 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		3E3C66722ADEBDB9005D4DE1 /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
-		3E3C66742ADECE4A005D4DE1 /* SECP256K1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SECP256K1.swift; sourceTree = "<group>"; };
-		3E95E4B12ADD6A6C00CEE333 /* Perks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Perks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E95E4B12ADD6A6C00CEE333 /* perks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = perks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E95E4B42ADD6A6C00CEE333 /* perksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = perksApp.swift; sourceTree = "<group>"; };
 		3E95E4B62ADD6A6C00CEE333 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3E95E4B82ADD6A6E00CEE333 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E95E4BB2ADD6A6E00CEE333 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5C4FDA4A2ADED1FE00D65D18 /* LandingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreen.swift; sourceTree = "<group>"; };
-		5C4FDA4C2ADED22D00D65D18 /* backgroundVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = backgroundVid.mp4; sourceTree = "<group>"; };
+		5CEFF4312AE5063400F0FCE7 /* LandingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,26 +36,34 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EFA80912ADE984C0099DC05 /* Push in Frameworks */,
-				3EFA808E2ADE98400099DC05 /* CustomAuthSdk in Frameworks */,
+				3EEBCDD12AE2E7CC00C462FD /* CustomAuthSdk in Frameworks */,
+				3EF770D42AE0196800D5AAC3 /* Push in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E3C66792ADFFB72005D4DE1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3E95E4A82ADD6A6C00CEE333 = {
 			isa = PBXGroup;
 			children = (
 				3E95E4B32ADD6A6C00CEE333 /* perks */,
 				3E95E4B22ADD6A6C00CEE333 /* Products */,
+				3E3C66792ADFFB72005D4DE1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		3E95E4B22ADD6A6C00CEE333 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3E95E4B12ADD6A6C00CEE333 /* Perks.app */,
+				3E95E4B12ADD6A6C00CEE333 /* perks.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,13 +71,11 @@
 		3E95E4B32ADD6A6C00CEE333 /* perks */ = {
 			isa = PBXGroup;
 			children = (
-				5C4FDA4C2ADED22D00D65D18 /* backgroundVid.mp4 */,
-				5C4FDA4A2ADED1FE00D65D18 /* LandingScreen.swift */,
+				5CEFF4312AE5063400F0FCE7 /* LandingScreen.swift */,
 				3E95E4B42ADD6A6C00CEE333 /* perksApp.swift */,
 				3E95E4B62ADD6A6C00CEE333 /* ContentView.swift */,
 				3E3C666E2ADEA6F6005D4DE1 /* MapView.swift */,
 				3E3C66722ADEBDB9005D4DE1 /* MarketplaceView.swift */,
-				3E3C66742ADECE4A005D4DE1 /* SECP256K1.swift */,
 				3E3C66702ADEB568005D4DE1 /* Debug.swift */,
 				3E95E4B82ADD6A6E00CEE333 /* Assets.xcassets */,
 				3E95E4BA2ADD6A6E00CEE333 /* Preview Content */,
@@ -92,9 +94,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3E95E4B02ADD6A6C00CEE333 /* Perks */ = {
+		3E95E4B02ADD6A6C00CEE333 /* perks */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E95E4BF2ADD6A6E00CEE333 /* Build configuration list for PBXNativeTarget "Perks" */;
+			buildConfigurationList = 3E95E4BF2ADD6A6E00CEE333 /* Build configuration list for PBXNativeTarget "perks" */;
 			buildPhases = (
 				3E95E4AD2ADD6A6C00CEE333 /* Sources */,
 				3E95E4AE2ADD6A6C00CEE333 /* Frameworks */,
@@ -104,13 +106,13 @@
 			);
 			dependencies = (
 			);
-			name = Perks;
+			name = perks;
 			packageProductDependencies = (
-				3EFA808D2ADE98400099DC05 /* CustomAuthSdk */,
-				3EFA80902ADE984C0099DC05 /* Push */,
+				3EF770D32AE0196800D5AAC3 /* Push */,
+				3EEBCDD02AE2E7CC00C462FD /* CustomAuthSdk */,
 			);
 			productName = perks;
-			productReference = 3E95E4B12ADD6A6C00CEE333 /* Perks.app */;
+			productReference = 3E95E4B12ADD6A6C00CEE333 /* perks.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,14 +140,14 @@
 			);
 			mainGroup = 3E95E4A82ADD6A6C00CEE333;
 			packageReferences = (
-				3EFA808C2ADE98400099DC05 /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */,
-				3EFA808F2ADE984C0099DC05 /* XCRemoteSwiftPackageReference "push-swift-sdk" */,
+				3EF770D22AE0196800D5AAC3 /* XCRemoteSwiftPackageReference "push-swift-sdk" */,
+				3EEBCDCF2AE2E7CC00C462FD /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */,
 			);
 			productRefGroup = 3E95E4B22ADD6A6C00CEE333 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3E95E4B02ADD6A6C00CEE333 /* Perks */,
+				3E95E4B02ADD6A6C00CEE333 /* perks */,
 			);
 		};
 /* End PBXProject section */
@@ -155,7 +157,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C4FDA4D2ADED22D00D65D18 /* backgroundVid.mp4 in Resources */,
 				3E95E4BC2ADD6A6E00CEE333 /* Preview Assets.xcassets in Resources */,
 				3E95E4B92ADD6A6E00CEE333 /* Assets.xcassets in Resources */,
 			);
@@ -168,12 +169,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C4FDA4B2ADED1FE00D65D18 /* LandingScreen.swift in Sources */,
 				3E95E4B72ADD6A6C00CEE333 /* ContentView.swift in Sources */,
+				5CEFF4322AE5063400F0FCE7 /* LandingScreen.swift in Sources */,
 				3E3C66712ADEB568005D4DE1 /* Debug.swift in Sources */,
 				3E3C66732ADEBDB9005D4DE1 /* MarketplaceView.swift in Sources */,
 				3E3C666F2ADEA6F6005D4DE1 /* MapView.swift in Sources */,
-				3E3C66752ADECE4A005D4DE1 /* SECP256K1.swift in Sources */,
 				3E95E4B52ADD6A6C00CEE333 /* perksApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -308,7 +308,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"perks/Preview Content\"";
-				DEVELOPMENT_TEAM = TS4RX6E9KD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location for XYZ reasons";
@@ -316,9 +315,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -340,7 +338,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"perks/Preview Content\"";
-				DEVELOPMENT_TEAM = TS4RX6E9KD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location for XYZ reasons";
@@ -348,9 +345,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -376,7 +372,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E95E4BF2ADD6A6E00CEE333 /* Build configuration list for PBXNativeTarget "Perks" */ = {
+		3E95E4BF2ADD6A6E00CEE333 /* Build configuration list for PBXNativeTarget "perks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E95E4C02ADD6A6E00CEE333 /* Debug */,
@@ -388,33 +384,33 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		3EFA808C2ADE98400099DC05 /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */ = {
+		3EEBCDCF2AE2E7CC00C462FD /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/UniPassID/Custom-Auth-iOS-SDK.git";
+			repositoryURL = "https://github.com/stevysmith/Custom-Auth-iOS-SDK/";
+			requirement = {
+				branch = "alpha-16-hotfix";
+				kind = branch;
+			};
+		};
+		3EF770D22AE0196800D5AAC3 /* XCRemoteSwiftPackageReference "push-swift-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/stevysmith/push-swift-sdk";
 			requirement = {
 				branch = main;
 				kind = branch;
 			};
 		};
-		3EFA808F2ADE984C0099DC05 /* XCRemoteSwiftPackageReference "push-swift-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ethereum-push-notification-service/push-swift-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		3EFA808D2ADE98400099DC05 /* CustomAuthSdk */ = {
+		3EEBCDD02AE2E7CC00C462FD /* CustomAuthSdk */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3EFA808C2ADE98400099DC05 /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */;
+			package = 3EEBCDCF2AE2E7CC00C462FD /* XCRemoteSwiftPackageReference "Custom-Auth-iOS-SDK" */;
 			productName = CustomAuthSdk;
 		};
-		3EFA80902ADE984C0099DC05 /* Push */ = {
+		3EF770D32AE0196800D5AAC3 /* Push */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 3EFA808F2ADE984C0099DC05 /* XCRemoteSwiftPackageReference "push-swift-sdk" */;
+			package = 3EF770D22AE0196800D5AAC3 /* XCRemoteSwiftPackageReference "push-swift-sdk" */;
 			productName = Push;
 		};
 /* End XCSwiftPackageProductDependency section */

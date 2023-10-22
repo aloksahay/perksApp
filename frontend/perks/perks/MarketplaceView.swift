@@ -9,6 +9,9 @@ import CustomAuthSdk
 import SwiftUI
 import web3
 import Push
+import web3swift
+import BigInt
+import Web3Core
 
 struct MarketplaceView: View {
     @Binding var smartAccount: SmartAccount?
@@ -84,7 +87,9 @@ struct MarketplaceView: View {
                     .keyboardType(.decimalPad)
                 
                 Button("Add Funds to Vault") {
-                    addFundsToVault(Double(fundsToAdd) ?? 0.0)
+                    Task {
+                        await addFundsToVault(Double(fundsToAdd) ?? 0.0)
+                    }
                 }
                 .padding()
                 .background(Color.blue)
@@ -98,7 +103,29 @@ struct MarketplaceView: View {
         }
     }
     
-    func addFundsToVault(_ amount: Double) {
+    func addFundsToVault(_ amount: Double) async {
+        
+        let vaultAddress = EthereumAddress("0x8078cB27dD51266950FE0317CB314F16f11Fac8b")!
+        
+        let provider = await Web3HttpProvider(URL(string: "https://node.wallet.unipass.id/polygon-mumbai")!, network: Networks.Custom(networkID: BigUInt(80001)))!
+        let web3 = Web3(provider: provider)
+        
+        let ABI_STRING: String = """
+        [{"inputs":[{"internalType":"address","name":"_uniswapPoolManager","type":"address"},{"internalType":"address","name":"_perksToken","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"OwnableInvalidOwner","type":"error"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"OwnableUnauthorizedAccount","type":"error"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"store","type":"address"},{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"PaidToStore","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"PerksBurnt","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"PerksEarned","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"PerksRedeemed","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"store","type":"address"},{"indexed":false,"internalType":"uint256","name":"rewardFraction","type":"uint256"}],"name":"StoreAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"store","type":"address"}],"name":"StoreRemoved","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"USDCDeposited","type":"event"},{"inputs":[],"name":"USDC","outputs":[{"internalType":"contract IERC20","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"user","type":"address"}],"name":"burnPerksTokens","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"store","type":"address"}],"name":"deleteStore","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"amount","type":"uint256"}],"name":"depositUSDC","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"lastBurnTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"lastTxTime","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"store","type":"address"},{"internalType":"uint256","name":"usdcAmount","type":"uint256"}],"name":"payToStore","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"perksToken","outputs":[{"internalType":"contract PerksToken","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"perksAmount","type":"uint256"},{"internalType":"address","name":"store","type":"address"}],"name":"redeemPerksTokens","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"rewardFraction","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"components":[{"internalType":"Currency","name":"currency0","type":"address"},{"internalType":"Currency","name":"currency1","type":"address"},{"internalType":"uint24","name":"fee","type":"uint24"},{"internalType":"int24","name":"tickSpacing","type":"int24"},{"internalType":"contract IHooks","name":"hooks","type":"address"}],"internalType":"struct PoolKey","name":"poolKey","type":"tuple"}],"name":"setUniswapPoolId","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"storeUsdcAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"uniswapPoolKey","outputs":[{"internalType":"Currency","name":"currency0","type":"address"},{"internalType":"Currency","name":"currency1","type":"address"},{"internalType":"uint24","name":"fee","type":"uint24"},{"internalType":"int24","name":"tickSpacing","type":"int24"},{"internalType":"contract IHooks","name":"hooks","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"uniswapPoolManager","outputs":[{"internalType":"contract IPoolManager","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"userUSDCAmount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"store","type":"address"},{"internalType":"uint256","name":"_rewardFraction","type":"uint256"}],"name":"whitelisteStore","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"","type":"address"}],"name":"whitelistedStores","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"}]
+        """
+
+        let contract = web3.contract(ABI_STRING, at: vaultAddress)
+        
+        // Encode the function call
+        let usdcAmount: BigUInt = 1000 * 1_000_000  // 1000 USDC, accounting for 6 decimal places
+        let parameters: [AnyObject] = [usdcAmount as AnyObject]
+        let encodedData = contract?.contract.method("depositUSDC", parameters: parameters, extraData: nil)
+
+        // Create the transaction
+        let tx = Shared.Transaction(to: "0x8078cB27dD51266950FE0317CB314F16f11Fac8b", data: encodedData!.toHexString(), value: "0x0")
+//        let result = try! await smartAccount!.simulateTransaction(transaction: tx, options: nil)
+//        print("tx: \(tx)\n simulate result: \(result)")
+        
         vaultBalance += amount
         fundsToAdd = ""  // Clear the text field after adding funds
     }

@@ -14,17 +14,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/krzyzanowskim/CryptoSwift.git",
       "state" : {
-        "revision" : "db51c407d3be4a051484a141bf0bff36c43d3b1e",
-        "version" : "1.8.0"
+        "revision" : "039f56c5d7960f277087a0be51f5eb04ed0ec073",
+        "version" : "1.5.1"
       }
     },
     {
       "identity" : "custom-auth-ios-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/UniPassID/Custom-Auth-iOS-SDK.git",
+      "location" : "https://github.com/stevysmith/Custom-Auth-iOS-SDK/",
       "state" : {
-        "branch" : "main",
-        "revision" : "d9b9d87fd6cc31b78e80599fd9893619524a9fed"
+        "branch" : "alpha-16-hotfix",
+        "revision" : "f787e7b4ac9fbcf5a3b57d82af9e3ec181db8695"
       }
     },
     {
@@ -48,10 +48,10 @@
     {
       "identity" : "push-swift-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/ethereum-push-notification-service/push-swift-sdk",
+      "location" : "https://github.com/stevysmith/push-swift-sdk",
       "state" : {
-        "revision" : "186e4236d7c334ef8c86a04ba81f3aa3610680aa",
-        "version" : "0.6.2"
+        "branch" : "main",
+        "revision" : "7cb5e6663efbe3638f0f6e5fdf4f3948b6a27b14"
       }
     },
     {
@@ -133,6 +133,15 @@
       "state" : {
         "revision" : "8ca33e700ed8de6137a0e1471017aa3b3c8de0db",
         "version" : "1.6.0"
+      }
+    },
+    {
+      "identity" : "web3swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stevysmith/web3swift.git",
+      "state" : {
+        "branch" : "master",
+        "revision" : "77e6af1779d0d4371f0e7d868236efd8a07ffce1"
       }
     },
     {
