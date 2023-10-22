@@ -54,6 +54,8 @@ Apecoin NFT: 0x339bAD52BB7874489567ae1208537FaeA8892993
 Tacobell NFT: 0x82cCE60CC416e4d3C8f3A9868512fdeB706A597B
 ```
 
+Tweet link: https://x.com/sahay_alok/status/1716230030362132906
+
 ## Ethereum Sepolia
 
 ```
