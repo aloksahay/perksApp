@@ -25,8 +25,8 @@ struct MapView: View {
     @Binding var user: PushUser?
     @State private var checkInStatus: CheckInStatus = .notCheckedIn
     @State private var navigateToMarketplace: Bool = false
-    @State private var balance: Float = 0
-    @State private var xp: Int = 0
+    @State private var balance: Float = 10
+    @State private var xp: Int = 5
     
     var body: some View {
         NavigationView {
@@ -48,7 +48,7 @@ struct MapView: View {
                     .padding(.leading, 10)
                     Spacer()
                     VStack(alignment: .trailing) {
-                        Text("Wallet Balance: $\(String(format: "%.1f", balance))")
+                        Text("Wallet Balance: $\(String(format: "%.2f", balance))")
                             .fontWeight(.semibold)
                             .foregroundColor(.black)
                         Text("Perks: \(xp)")
@@ -86,7 +86,18 @@ struct MapView: View {
                                     return Alert(title: Text("Welcome Back!"),
                                                  message: Text("You're a member of the rewards club."),
                                                  dismissButton: .default(Text("OK")) {
-                                                     navigateToMarketplace = true
+                                                    Task {
+                                                        do {
+                                                            let userAddress = try await self.smartAccount!.address()
+                                                            let txHash = try await mintRewardsCard(for: userAddress)
+                                                            // Optionally, you can wait for the transaction to be confirmed here
+                                                            print("Minting successful with tx hash: \(txHash)")
+                                                            
+                                                            navigateToMarketplace = true
+                                                        } catch {
+                                                            print("Error minting rewards card: \(error)")
+                                                        }
+                                                    }
                                                  })
                                 case .notAMember:
                                     return Alert(title: Text("Welcome!"),
@@ -228,7 +239,29 @@ struct MapView: View {
 
         print("Is subscribed?")
         print(isOptOut)
+        
+        
+        
+        let chatId = "064ae7a086bc1d25cf45231a9725fec6789e1013b99bb482f41136268ffa73c6"
+        let group:PushChat.PushGroup? = try await PushChat.getGroup(chatId: chatId, env: .STAGING)
+        
+        let signer = SmartAccountSigner(account: self.smartAccount!)
+        
+        let pgpPrivateKey = try await PushUser.DecryptPGPKey(
+          encryptedPrivateKey: user!.encryptedPrivateKey,
+          signer: signer
+        )
 
+        let msgRes:Message = try await PushChat.send(
+            PushChat.SendOptions(
+                messageContent: "GM frens of Perks",
+                messageType: "Text",
+                receiverAddress: chatId,
+                account: userAddress,
+                pgpPrivateKey: pgpPrivateKey
+            ))
+        
+        print(msgRes)
         
         return "minted"
     }

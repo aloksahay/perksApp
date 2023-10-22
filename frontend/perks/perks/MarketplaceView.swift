@@ -16,8 +16,8 @@ import Web3Core
 struct MarketplaceView: View {
     @Binding var smartAccount: SmartAccount?
     @State private var fundsToAdd: String = ""
-    @State private var vaultBalance: Double = 0.0
-    @State private var userXP: Int = 0
+    @State private var vaultBalance: Double = 10.0
+    @State private var userXP: Int = 5
     @State private var selectedProduct: Product?
     @State private var showAlert: Bool = false
     @State private var alertTitle: String = ""
@@ -36,10 +36,11 @@ struct MarketplaceView: View {
             Text("AppCoin Products")
                 .font(.largeTitle)
             
-            Text("Your ApeCoin XP: \(userXP)")
+            Text("Wallet Balance: $\(vaultBalance, specifier: "%.2f")")
                 .font(.headline)
-            Text("Vault Balance: $\(vaultBalance, specifier: "%.2f")")
+            Text("Perks: \(userXP)")
                 .font(.headline)
+            
 
             
             List(products, id: \.id) { product in
