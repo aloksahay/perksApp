@@ -25,6 +25,7 @@ struct HomeView: View {
                 }) {
                     Text("Top Up")
                         .padding()
+                        .font(.subheadline)
                         .background(Color.black)
                         .foregroundColor(.white)
                 }
@@ -32,33 +33,57 @@ struct HomeView: View {
                 Spacer()
                 VStack(alignment: .trailing) {
                     Text("Wallet Balance: \(balance) USD")
+                        .foregroundColor(.accentColor)
                     Text("Perks: \(xp) XP")
+                        .foregroundColor(.accentColor)
                 }
                 .padding()
             }
             
             Map(coordinateRegion: $viewModel.region)
-                .frame(height: 300)
+                .frame(height: 250)
                 .edgesIgnoringSafeArea(.horizontal)
             
             HStack {
                 VStack(alignment: .leading) {
                     Text("1421 Valencia St, San Francisco")
                         .font(.subheadline)
-                        .foregroundColor(.gray)
+                        .foregroundColor(.accentColor)
                         .padding(.top, 10)
                     
                     Text("Made By Apes Store #2")
-                        .font(.title2)
-                        .padding(.bottom, 10)
+                        .font(.title3)
+                        .foregroundColor(.black)
                 }
                 Spacer()
             }
             .padding(.leading)
             
-            
+            Button(action: {
+                            // Define the action to be performed when the button is tapped
+                        }) {
+                            VStack {
+                                Text("")
+                                    .foregroundColor(.white)
+                            }
+                            .frame(maxWidth: .infinity, maxHeight: 200)
+                            .background(
+                                Image("MBA_card")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                            )
+                        }
+                        .cornerRadius(7)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 10)
+                                .stroke(Color.accentColor, lineWidth: 5)
+                        )
+                        .clipped()
+                        .padding(10)
             Spacer()
         }
+        .background(Color.white)
+//        .edgesIgnoringSafeArea(.all)
     }
 }
 
