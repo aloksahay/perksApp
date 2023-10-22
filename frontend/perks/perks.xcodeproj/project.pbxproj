@@ -17,6 +17,8 @@
 		3E95E4BC2ADD6A6E00CEE333 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E95E4BB2ADD6A6E00CEE333 /* Preview Assets.xcassets */; };
 		3EFA808E2ADE98400099DC05 /* CustomAuthSdk in Frameworks */ = {isa = PBXBuildFile; productRef = 3EFA808D2ADE98400099DC05 /* CustomAuthSdk */; };
 		3EFA80912ADE984C0099DC05 /* Push in Frameworks */ = {isa = PBXBuildFile; productRef = 3EFA80902ADE984C0099DC05 /* Push */; };
+		5C4FDA4B2ADED1FE00D65D18 /* LandingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FDA4A2ADED1FE00D65D18 /* LandingScreen.swift */; };
+		5C4FDA4D2ADED22D00D65D18 /* backgroundVid.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 5C4FDA4C2ADED22D00D65D18 /* backgroundVid.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,11 +26,13 @@
 		3E3C66702ADEB568005D4DE1 /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		3E3C66722ADEBDB9005D4DE1 /* MarketplaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketplaceView.swift; sourceTree = "<group>"; };
 		3E3C66742ADECE4A005D4DE1 /* SECP256K1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SECP256K1.swift; sourceTree = "<group>"; };
-		3E95E4B12ADD6A6C00CEE333 /* perks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = perks.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E95E4B12ADD6A6C00CEE333 /* Perks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Perks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E95E4B42ADD6A6C00CEE333 /* perksApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = perksApp.swift; sourceTree = "<group>"; };
 		3E95E4B62ADD6A6C00CEE333 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		3E95E4B82ADD6A6E00CEE333 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E95E4BB2ADD6A6E00CEE333 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5C4FDA4A2ADED1FE00D65D18 /* LandingScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingScreen.swift; sourceTree = "<group>"; };
+		5C4FDA4C2ADED22D00D65D18 /* backgroundVid.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = backgroundVid.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +59,7 @@
 		3E95E4B22ADD6A6C00CEE333 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				3E95E4B12ADD6A6C00CEE333 /* perks.app */,
+				3E95E4B12ADD6A6C00CEE333 /* Perks.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -63,6 +67,8 @@
 		3E95E4B32ADD6A6C00CEE333 /* perks */ = {
 			isa = PBXGroup;
 			children = (
+				5C4FDA4C2ADED22D00D65D18 /* backgroundVid.mp4 */,
+				5C4FDA4A2ADED1FE00D65D18 /* LandingScreen.swift */,
 				3E95E4B42ADD6A6C00CEE333 /* perksApp.swift */,
 				3E95E4B62ADD6A6C00CEE333 /* ContentView.swift */,
 				3E3C666E2ADEA6F6005D4DE1 /* MapView.swift */,
@@ -86,9 +92,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3E95E4B02ADD6A6C00CEE333 /* perks */ = {
+		3E95E4B02ADD6A6C00CEE333 /* Perks */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E95E4BF2ADD6A6E00CEE333 /* Build configuration list for PBXNativeTarget "perks" */;
+			buildConfigurationList = 3E95E4BF2ADD6A6E00CEE333 /* Build configuration list for PBXNativeTarget "Perks" */;
 			buildPhases = (
 				3E95E4AD2ADD6A6C00CEE333 /* Sources */,
 				3E95E4AE2ADD6A6C00CEE333 /* Frameworks */,
@@ -98,13 +104,13 @@
 			);
 			dependencies = (
 			);
-			name = perks;
+			name = Perks;
 			packageProductDependencies = (
 				3EFA808D2ADE98400099DC05 /* CustomAuthSdk */,
 				3EFA80902ADE984C0099DC05 /* Push */,
 			);
 			productName = perks;
-			productReference = 3E95E4B12ADD6A6C00CEE333 /* perks.app */;
+			productReference = 3E95E4B12ADD6A6C00CEE333 /* Perks.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -139,7 +145,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				3E95E4B02ADD6A6C00CEE333 /* perks */,
+				3E95E4B02ADD6A6C00CEE333 /* Perks */,
 			);
 		};
 /* End PBXProject section */
@@ -149,6 +155,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C4FDA4D2ADED22D00D65D18 /* backgroundVid.mp4 in Resources */,
 				3E95E4BC2ADD6A6E00CEE333 /* Preview Assets.xcassets in Resources */,
 				3E95E4B92ADD6A6E00CEE333 /* Assets.xcassets in Resources */,
 			);
@@ -161,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C4FDA4B2ADED1FE00D65D18 /* LandingScreen.swift in Sources */,
 				3E95E4B72ADD6A6C00CEE333 /* ContentView.swift in Sources */,
 				3E3C66712ADEB568005D4DE1 /* Debug.swift in Sources */,
 				3E3C66732ADEBDB9005D4DE1 /* MarketplaceView.swift in Sources */,
@@ -300,6 +308,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"perks/Preview Content\"";
+				DEVELOPMENT_TEAM = TS4RX6E9KD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location for XYZ reasons";
@@ -307,8 +316,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -330,6 +340,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"perks/Preview Content\"";
+				DEVELOPMENT_TEAM = TS4RX6E9KD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location for XYZ reasons";
@@ -337,8 +348,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -364,7 +376,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3E95E4BF2ADD6A6E00CEE333 /* Build configuration list for PBXNativeTarget "perks" */ = {
+		3E95E4BF2ADD6A6E00CEE333 /* Build configuration list for PBXNativeTarget "Perks" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				3E95E4C02ADD6A6E00CEE333 /* Debug */,
