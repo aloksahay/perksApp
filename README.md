@@ -1,6 +1,25 @@
 # perksApp
 Perks iOS app, built for ETHGlobal Online 2023
 
+# Account Abstraction
+
+We used [UniPass](https://docs.wallet.unipass.id/custom-auth/ios-sdk/quick-start) to create or import a SmartAccount. For our example we imported an account which created a SmartAccount which can be used for making future requests, such as signing messages and creating EIP712 Signature's for the Push SDK. It also allows for easily switching between chains. We utilised this so that users can easily create a safe abstracted account whilst also being able to login through their socials for easier adoption.
+
+Creating smart account:
+```
+let keyStorage = EthereumKeyLocalStorage()
+let account = try! EthereumAccount.importAccount(replacing: keyStorage, privateKey: "0xd5071223dcbf1cb824090bd98e0ddc807be00f1874fdd74bbd9225773a824397", keystorePassword: "MY_PASSWORD") //We are aware the pvt is visible, it's all according to bad but intentional design choices.
+let options = SmartAccountOptions(masterKeySigner: account, appId: "9e145ea3e5525ee793f39027646c4511",  chainOptions: [ChainOptions(chainId: ChainID.POLYGON_MUMBAI, rpcUrl: "https://node.wallet.unipass.id/polygon-mumbai", relayerUrl: nil), ChainOptions(chainId: ChainID.ETHEREUM_GOERLI, rpcUrl: "https://node.wallet.unipass.id/eth-goerli", relayerUrl: "https://testnet.wallet.unipass.id/relayer-v2-eth")])
+self.smartAccount = CustomAuthSdk.SmartAccount(options: options)
+let initOptions = SmartAccountInitOptions(chainId: ChainID.POLYGON_MUMBAI)
+try! await self.smartAccount!.initialize(options: initOptions)
+```
+
+Switching chains from Polygon Mumbai to Eth Goerli:
+```
+try! self.smartAccount!.switchChain(chainID: ChainID.ETHEREUM_GOERLI)
+```
+
 # Deployed contracts
 
 ## Polygon Mumbai
